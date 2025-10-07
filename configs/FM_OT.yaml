@@ -1,0 +1,17 @@
+data:
+  N: 20000
+  
+model:
+  ODEFunc_config: [512, 512, 512, 512]
+  data_dim: 2
+  h_k: 1
+  h_steps: 15
+  activation: softplus
+
+training:
+  batch_size: 512
+  lr: 0.001
+  epochs: 500
+  clip_grad: 1.0
+  save_path: chkpt/FM_OT.pt
+  shuffle: True

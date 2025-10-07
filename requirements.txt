@@ -1,0 +1,10 @@
+torch
+torchvision
+torchdiffeq
+numpy
+scipy
+scikit-learn
+matplotlib
+tqdm
+PyYAML
+wandb
