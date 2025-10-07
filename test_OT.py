@@ -4,6 +4,7 @@ from argparse import Namespace
 from src import get_data, model, training
 import torch
 import matplotlib.pyplot as plt
+import os
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 parser = argparse.ArgumentParser(description='Load hyperparameters from a YAML file.')
@@ -14,6 +15,7 @@ with open(args_parsed.JKO_config, "r") as f:
     config = yaml.safe_load(f)
 
 if __name__ == '__main__':
+    os.makedirs('results', exist_ok=True)
     save_path = config['training']['save_path']
     
     checkpoint = torch.load(save_path, weights_only=False)
