@@ -13,20 +13,23 @@ The model is inspired by [Flow-based generative models as iterative algorithms i
 
 ## Overview
 
-FlowMatching for OT aims to directly learn a vector field $ v(x,t) $ whose flow transports particles from a source distribution $ p $ to a target distribution $ q $.
+FlowMatching for OT aims to directly learn a vector field $v(x,t)$ whose flow transports particles from a source distribution $p$ to a target distribution $q$.
 The training objective minimizes:
-$
+
+$$
 L(\hat{v}) := \int_0^1 
 \mathbb{E}_{x_p, x_q}
-\left\|
+\Big\lVert
 \hat{v}(\phi(t), t) - \frac{d}{dt}\phi(t)
-\right\|^2
-\, dt
-$, where $\phi(t) := I_t(x_p, x_q)$ is a pre-specified
+\Big\rVert^2
+ dt
+$$
+
+where $\phi(t) := I_t(x_p, x_q)$ is a pre-specified
 “interpolation function” .
 
 
-This implementation focuses on **one-step FM** (single ODE block), learning a direct OT-like flow between $ p $ and $ q $. We set $ \frac{d}{dt}\phi(t) = x_q - x_p $ for the linear interpolation path $ \phi(t) = (1-t)x_p + t x_q $, where $x_p \sim p$ and $x_q \sim q$.
+This implementation focuses on **one-step FM** (single ODE block), learning a direct OT-like flow between $p$ and $q$. We set $\frac{d}{dt}\phi(t) = x_q - x_p$ for the linear interpolation path $\phi(t) = (1-t)x_p + t x_q$, where $x_p \sim p$ and $x_q \sim q$.
 
 ---
 
